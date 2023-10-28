@@ -1,0 +1,44 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --color: #1e90ff;
+    --bg-color: rgb(20, 20, 37);
+  }
+  
+
+.TodoApp {
+    padding: 40px;
+    height: 100vh;
+    background-color: var(--bg-color);
+    overflow: hidden scroll;
+    box-sizing: border-box;
+}
+
+.container-notes {
+    display: flex;
+    width: 100%;
+}
+
+h1, p, span {
+    color: var(--color);
+}
+
+/* -------------------- */
+/* -------------------- */
+/* -------------------- */
+
+/* NEW NOTE STYLES */
+
+.NewNote, .NewNote label {
+    display: flex;
+    flex-direction: column;
+}
+
+.NewNote label {
+    padding: 10px;
+
+}
+
