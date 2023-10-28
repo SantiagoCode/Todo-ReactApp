@@ -1,4 +1,4 @@
-const NewNote = ({data, setData}) => {
+const NewItem = ({data, setData, switchMode}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -9,19 +9,20 @@ const NewNote = ({data, setData}) => {
     }
 
     return (
-        <div className='NewNote'>
+        <div className='NewItem'>
+            <h1>Nueva nota</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="">
+                <label htmlFor="title">
                     <span>Titulo: </span>
-                    <input type="text" name="title" id="" />
+                    <input type="text" name="title" id="title" />
                 </label>
-                <label htmlFor="">
+                <label htmlFor="description">
                     <span>Descripcion: </span>
-                    <textarea rows="" cols="" name="description"></textarea>
+                    <textarea rows="" cols="" name="description" id="description"></textarea>
                 </label>
-                <label htmlFor="">
+                <label htmlFor="color">
                     <span>Color de la nota: </span>
-                    <input type="color" name="color" id="" />
+                    <input type="color" name="color" id="color" />
                 </label>
                 <button>
                     Guardar Nota
@@ -31,4 +32,4 @@ const NewNote = ({data, setData}) => {
     )
 }
 
-export default NewNote
+export default NewItem
