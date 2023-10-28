@@ -5,8 +5,8 @@ body {
 }
 
 :root {
-    --color: #1e90ff;
-    --bg-color: rgb(20, 20, 37);
+    --color: #ffffff;
+    --bg-color: #24292e;
 }
   
 .TodoApp {
@@ -25,6 +25,17 @@ body {
 
 .header-title {
     margin-bottom: 20px;
+    font-size: 46px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+}
+
+.title svg {
+    margin-right: 20px;
+    color: #2a64f6;
 }
 
 .container-notes {
@@ -43,6 +54,10 @@ body {
 h1, p, span {
     color: var(--color);
     margin: 0;
+}
+
+h1 {
+    font-size: 34px;
 }
 
 button {
