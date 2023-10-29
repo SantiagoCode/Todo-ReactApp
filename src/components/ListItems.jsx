@@ -32,11 +32,11 @@ export const ItemNote = ({value, index, data, setData}) => {
         }
     }
 
-    const deleteItem = (event, index) => {
+    const deleteItem = (event, id) => {
         event.preventDefault() 
         let newData = [...data]
         newData = newData.filter((item) => {
-            return item.id !== index
+            return item.id !== id
         })
         setData(newData)
     }
@@ -45,7 +45,10 @@ export const ItemNote = ({value, index, data, setData}) => {
         <li style={{ backgroundColor: value.color }}>
             {colapse ? 
                 <div className="colapsed-item">
-                    <p>{value.title}</p>
+                    <div className="flex-division" style={{ display: 'flex', alignItems: 'center' }}>
+                        <Icon.Disc style={{ marginRight: '10px', color: 'white' }}/>
+                        <p>{value.title}</p>
+                    </div>
                     <button className="btn-control-item" onClick={() => setColapse(false)}>
                         <Icon.Maximize />
                     </button>

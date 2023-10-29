@@ -12,9 +12,9 @@ const NewItem = ({data, setData, switchMode}) => {
         event.preventDefault()
         const form = new FormData(event.target)
         const formFromEntries = Object.fromEntries(form)
-        const dateOfCreation = new Date()
-        form.append("id", formFromEntries.title.toLowerCase().replaceAll(' ', '_'));
-        form.append("date", dateOfCreation.toLocaleDateString());
+
+        formFromEntries.id = Object.fromEntries(form).title.toLowerCase().replaceAll(' ', '_')
+        formFromEntries.date = new Date().toLocaleDateString()
 
         if (formFromEntries.title !== '' && formFromEntries.description !== '') {
             if(!validateNewItem(formFromEntries.title)){
