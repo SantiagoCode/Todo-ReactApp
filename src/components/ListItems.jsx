@@ -92,9 +92,8 @@ export const ItemNote = ({value}) => {
 }
 
 export default function ListItems({keyWord}) {
-    const { states, setters } = useContext(TaskNotesContext);
+    const { states } = useContext(TaskNotesContext);
     const { taskNotes, notes, tasks } = states
-    const { setNotes } = setters
 
     const filteredData = (taskNotes === 'note' ? notes : tasks).filter((item, key) => {
         if(item.title.includes(keyWord) || item.description.includes(keyWord)){
@@ -107,10 +106,10 @@ export default function ListItems({keyWord}) {
             <h1 className="title has-text-white">
                 <Icon.List />
                 <span  className="ml-3">
-                    Historial de {taskNotes === 'note' ? 'Notas' : 'Tareas'}
+                    Listado de {taskNotes === 'note' ? 'Notas' : 'Tareas'}
                 </span>
             </h1>
-            <ul style={{ padding: 0 }}>
+            <ul className='listado'>
                 {filteredData.length > 0 ?
                     filteredData.map((item, key) => (
                         <ItemNote value={item} index={key} key={`key-${key}-${JSON.stringify(item)}`}/>

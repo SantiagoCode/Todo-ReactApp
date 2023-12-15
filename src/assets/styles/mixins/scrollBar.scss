@@ -1,0 +1,38 @@
+@mixin mwScrollBar($color, $width: 4px) {
+	&::-webkit-scrollbar {
+		width: $width;
+		height: 4px;
+		right: -10px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: $color;
+		border-radius: 5px;
+		background-clip: content-box;
+		box-shadow: inset 0px 0px 10px 10px green;
+		border: 10px solid transparent;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: transparent;
+		border-radius: 5px;
+		box-shadow: inset 0px 0px 10px 10px green;
+		border: 10px solid transparent;
+	}
+
+	&::-webkit-scrollbar-corner {
+		background: transparent;
+	}
+
+	&::-webkit-scrollbar-button {
+		background: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb:hover,
+	&::-webkit-scrollbar-thumb:active,
+	&::-webkit-scrollbar-thumb:horizontal,
+	&::-webkit-scrollbar-thumb:vertical,
+	&::-webkit-scrollbar-thumb:horizontal:hover {
+		background: $color;
+	}
+}

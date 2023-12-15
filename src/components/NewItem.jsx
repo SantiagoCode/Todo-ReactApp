@@ -1,6 +1,7 @@
 import * as Icon from 'react-feather';
 import { useContext } from 'react'
 import { TaskNotesContext } from './../context/TaskNotesContext';
+import toastMessage from './../helpers/toastMessage'
 
 const NewItem = () => {
     const { states, setters } = useContext(TaskNotesContext);
@@ -23,12 +24,13 @@ const NewItem = () => {
 
         if (formFromEntries.title !== '' && formFromEntries.description !== '') {
             if(!validateNewItem(formFromEntries.title)){
-                setNotes([...notes, formFromEntries]);
+                setNotes([formFromEntries, ...notes]);
+                toastMessage.success(`La nota ha sido guardada con exito.`)
             } else {
-                alert(`La nota con el nombre ${formFromEntries.title} ya existe, por favor seleccione un nombre diferente.`)
+                toastMessage.error(`La nota con el nombre ${formFromEntries.title} ya existe, por favor seleccione un nombre diferente.`)
             }
         } else {
-            alert('Debes introducir un titulo y una descripcion como minimo para añadir una nota.')
+            toastMessage.error('Debes introducir un titulo y una descripcion al menos para añadir una nota.')
         }
     }
 
@@ -42,12 +44,13 @@ const NewItem = () => {
 
         if (formFromEntries.title !== '' && formFromEntries.description !== '') {
             if(!validateNewItem(formFromEntries.title)){
-                setTasks([...tasks, formFromEntries]);
+                setTasks([formFromEntries, ...tasks]);
+                toastMessage.success(`La tarea ha sido guardada con exito.`)
             } else {
-                alert(`La tarea con el nombre ${formFromEntries.title} ya existe, por favor seleccione un nombre diferente.`)
+                toastMessage.error(`La tarea con el nombre ${formFromEntries.title} ya existe, por favor seleccione un nombre diferente.`)
             }
         } else {
-            alert('Debes introducir un titulo y una descripcion como minimo para añadir una tarea.')
+            toastMessage.error('Debes introducir un titulo y una descripcion al menos para añadir una tarea.')
         }
     }
 
