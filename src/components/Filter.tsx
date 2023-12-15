@@ -8,12 +8,7 @@ const Filter = ({setKeyWord}) => {
 
   return (
     <div className='Filter'>
-        <form action="">
-            <label htmlFor="filter">
-                <span>Filtrar: </span>
-                <input type="text" name="" id="filter" onChange={handleInputChange}/>
-            </label>
-        </form>
+        <input className='input' type="text" name="" id="filter" onChange={handleInputChange} placeholder='Filtrar...'/>
     </div>
   )
 }

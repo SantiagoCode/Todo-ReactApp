@@ -1,14 +1,19 @@
 import * as Icon from 'react-feather';
+import { useContext } from 'react'
+import { TaskNotesContext } from './../context/TaskNotesContext';
 
-const NewItem = ({data, setData, switchMode}) => {
+const NewItem = () => {
+    const { states, setters } = useContext(TaskNotesContext);
+    const { taskNotes, notes, tasks } = states
+    const { setNotes, setTasks } = setters
     
     const validateNewItem = (title) => {
-        return data.find((item) => {
+        return (taskNotes === 'note' ? notes : tasks).find((item) => {
             return item.title === title
         })
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmitNote = (event) => {
         event.preventDefault()
         const form = new FormData(event.target)
         const formFromEntries = Object.fromEntries(form)
@@ -18,7 +23,7 @@ const NewItem = ({data, setData, switchMode}) => {
 
         if (formFromEntries.title !== '' && formFromEntries.description !== '') {
             if(!validateNewItem(formFromEntries.title)){
-                setData([...data, formFromEntries]);
+                setNotes([...notes, formFromEntries]);
             } else {
                 alert(`La nota con el nombre ${formFromEntries.title} ya existe, por favor seleccione un nombre diferente.`)
             }
@@ -27,17 +32,38 @@ const NewItem = ({data, setData, switchMode}) => {
         }
     }
 
+    const handleSubmitTask = (event) => {
+        event.preventDefault()
+        const form = new FormData(event.target)
+        const formFromEntries = Object.fromEntries(form)
+
+        formFromEntries.id = Object.fromEntries(form).title.toLowerCase().replaceAll(' ', '_')
+        formFromEntries.date = new Date().toLocaleDateString()
+
+        if (formFromEntries.title !== '' && formFromEntries.description !== '') {
+            if(!validateNewItem(formFromEntries.title)){
+                setTasks([...tasks, formFromEntries]);
+            } else {
+                alert(`La tarea con el nombre ${formFromEntries.title} ya existe, por favor seleccione un nombre diferente.`)
+            }
+        } else {
+            alert('Debes introducir un titulo y una descripcion como minimo para añadir una tarea.')
+        }
+    }
 
     return (
-        <div className='NewItem'>
-            <h1 className='title'>
+        <div className='NewItem box is-shadowless'>
+            <h1 className='title has-text-white'>
                 <Icon.FilePlus />
-                Nueva nota
+                <span  className="ml-3"></span>
+                {taskNotes === 'note' ? 'Nueva nota' : 'Nueva tarea'}
             </h1>
-            <form onSubmit={handleSubmit}>
+            
+            {taskNotes === 'note' ?
+            <form onSubmit={handleSubmitNote}>
                 <label htmlFor="title">
                     <span>Titulo: </span>
-                    <input type="text" name="title" id="title" />
+                    <input className='input' type="text" name="title" id="title" />
                 </label>
                 <label htmlFor="description">
                     <span>Descripcion: </span>
@@ -45,12 +71,31 @@ const NewItem = ({data, setData, switchMode}) => {
                 </label>
                 <label htmlFor="color">
                     <span>Color de la nota: </span>
-                    <input type="color" name="color" id="color" defaultValue={'#2a64f6'}/>
+                    <input className='input' type="color" name="color" id="color" defaultValue={'#2a64f6'}/>
                 </label>
-                <button>
+                <button className='btn-save button'>
                     Guardar Nota
                 </button>
             </form>
+            : 
+            <form onSubmit={handleSubmitTask}>
+                <label htmlFor="title">
+                    <span>Titulo: </span>
+                    <input className='input' type="text" name="title" id="title" />
+                </label>
+                <label htmlFor="description">
+                    <span>Descripcion: </span>
+                    <textarea rows="" cols="" name="description" id="description"></textarea>
+                </label>
+                <label htmlFor="color">
+                    <span>Color de la tarea: </span>
+                    <input className='input' type="color" name="color" id="color" defaultValue={'#2a64f6'}/>
+                </label>
+                <button className='btn-save button'>
+                    Guardar Tarea
+                </button>
+            </form>
+            }
         </div>
     )
 }

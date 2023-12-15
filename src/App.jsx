@@ -1,38 +1,51 @@
-import { useState, useEffect } from 'react'
-import './App.css'
+import { useState, useEffect, useContext } from 'react'
+import './assets/styles/App.css'
+import Filter from './components/Filter'
 import NewItem from './components/NewItem'
 import ListItems from './components/ListItems'
 import SwitchButtons from './components/SwitchButtons'
-import Filter from './components/Filter'
+import { TaskNotesContext } from './context/TaskNotesContext';
 
 function App() {
-
-  const getDataValidation = () => {
-    return localStorage.getItem('data') ? JSON.parse(localStorage.getItem('data')) : []
-  }
-  
-  const [ data, setData ] = useState(getDataValidation())
-  const [ switchMode, setSwitchMode ] = useState('note')
-  const [ keyWord, setKeyWord ] = useState([])
+  const { states } = useContext(TaskNotesContext);
+  const { notes, tasks } = states;
+  const [keyWord, setKeyWord] = useState([]);
 
   useEffect(() => {
-    localStorage.setItem('data', JSON.stringify(data));
-  }, [data]);
+    localStorage.setItem('notes', JSON.stringify(notes));
+  }, [notes]);
 
-  // useEffect(() => {
-  //   console.log(switchMode === 'note' ? 'nota' : 'tarea');
-  // }, [switchMode]);
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
   return (
     <div className='TodoApp'>
-      <div className="header">
-        <h1 className='header-title'>Todo App</h1>
-        <Filter setKeyWord={setKeyWord}/>
-        <SwitchButtons state={switchMode} setState={setSwitchMode}/>
-      </div>
+      <nav className="navbar" role="navigation" aria-label="main navigation">
+        <div className="navbar-brand">
+          <h1 className='header-title'>ToDo - App</h1>
+
+          <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navbarBasicExample" className="navbar-menu">
+          <div className="navbar-end">
+            <div className="navbar-item">
+              <Filter setKeyWord={setKeyWord}/>
+            </div>
+            <div className="navbar-item">
+              <SwitchButtons />
+            </div>
+          </div>
+        </div>
+      </nav>
       <section className="container-notes">
-        <NewItem data={data} setData={setData} mode={switchMode}></NewItem>
-        <ListItems data={data} setData={setData} mode={switchMode} keyWord={keyWord}></ListItems>
+        <NewItem />
+        <ListItems keyWord={keyWord} />
       </section>
     </div>
   )
