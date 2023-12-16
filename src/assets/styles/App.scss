@@ -4,6 +4,8 @@
 @import './config.scss';
 @import './mixins/scrollBar.scss';
 
+@import 'react-calendar/dist/Calendar.css';
+
 html {
     overflow: hidden;
 }
@@ -104,7 +106,6 @@ body {
             }
         }
         
-        
         .date-text {
             font-size: 12px;
             text-align: right;
@@ -130,7 +131,6 @@ body {
                 background: transparent;
                 color: white;
             }
-       
         }      
     }
 }
@@ -141,3 +141,6 @@ body {
     --primary: #2a64f6;
 }
   
+.react-calendar__navigation__label__labelText--from {
+    color: black;
+}

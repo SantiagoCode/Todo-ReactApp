@@ -17,7 +17,7 @@ export const ItemNote = ({value}) => {
 
         if (!disabled) {
             const form = Object.fromEntries(new FormData(event.target))
-            const dayOfModification = new Date()
+            const dayOfModification = new InputDate()
 
             const dataClone = [...notes]
             const newData = dataClone.map((item) => {
@@ -25,7 +25,7 @@ export const ItemNote = ({value}) => {
                 if(item.id === id){
                     item.title = form.title;
                     item.description = form.description;
-                    item.date = dayOfModification.toLocaleDateString()
+                    item.date = dayOfModification.toLocaleInputDateString()
                     return item
                 } else {
                     return item
@@ -74,7 +74,10 @@ export const ItemNote = ({value}) => {
                 <form onSubmit={handleEditItem} id={value.id}>
                     <input className="input" type="text" name="title" id="" defaultValue={value.title} style={{ pointerEvents: disabled ? 'none' : 'auto' }}/>
                     <textarea className="textarea" rows="3" cols="" name="description" id="description" defaultValue={value.description} style={{ pointerEvents: disabled ? 'none' : 'auto' }}/>
-                    <h2 className="date-text has-text-white">{value.date}</h2>
+                    <h2 className="date-text has-text-white">Fecha de creacion: {value.created}</h2>
+                    {value.limitdate &&
+                        <h2 className="date-text has-text-white">Fecha limite para la tarea: {new Date(value.limitdate).toLocaleDateString()}</h2>
+                    }
 
                     <div className="buttons">
                         <div className="actions">
