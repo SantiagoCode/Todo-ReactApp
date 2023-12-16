@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import InputDate from './inputs/InputDate'
+import RichInput from './inputs/RichInput'
 import toastMessage from './../helpers/toastMessage'
 import { TaskNotesContext } from './../context/TaskNotesContext'
 
@@ -64,7 +65,7 @@ const Form = () => {
             </label>
             <label htmlFor="description">
                 <span>Descripcion: </span>
-                <textarea rows="" cols="" name="description" id="description"></textarea>
+                <RichInput />            
             </label>
             <label htmlFor="color">
                 <span>Color de la nota: </span>

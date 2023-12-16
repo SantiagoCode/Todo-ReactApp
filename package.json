@@ -16,6 +16,7 @@
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",
     "react-hot-toast": "^2.4.1",
+    "react-simple-wysiwyg": "^3.0.2",
     "sass": "^1.69.5"
   },
   "devDependencies": {

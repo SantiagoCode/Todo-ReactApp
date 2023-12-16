@@ -144,3 +144,19 @@ body {
 .react-calendar__navigation__label__labelText--from {
     color: black;
 }
+
+// WYSIWYG EDITOR
+
+.rsw-toolbar {
+    display: flex;
+    justify-content: space-evenly;
+
+    button span {
+        color: black !important;
+    }
+}
+
+.rsw-ce {
+    background: white;
+    color: black;
+}
