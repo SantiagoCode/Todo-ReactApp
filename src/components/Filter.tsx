@@ -1,14 +1,14 @@
 import React from 'react'
 
-const Filter = ({setKeyWord}) => {
-    const handleInputChange = (event) => {
-        const actualValue = event.target.value;
-        setKeyWord(actualValue)
-    }
+const Filter = ({ setter }) => {
+  const handleInputChange = (event) => {
+      const actualValue = event.target.value;
+      setter(actualValue);
+  }
 
   return (
     <div className='Filter'>
-        <input className='input' type="text" name="" id="filter" onChange={handleInputChange} placeholder='Filtrar...'/>
+      <input className='input' type="text" id="filter" onChange={handleInputChange} placeholder='Filtrar...'/>
     </div>
   )
 }

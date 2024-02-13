@@ -14,6 +14,24 @@ const Form = () => {
         return item.title === title
     })
   }
+  
+  const inputValidation = (dataForm, type) => {
+    if (dataForm.title !== '' && dataForm.description !== '') {
+        if(!validateNewItem(dataForm.title)){
+            if(type === 'nota'){
+                setNotes([dataForm, ...notes]);
+            }
+            else {
+                setTasks([dataForm, ...tasks]);
+            }
+            toastMessage.success(`La ${type} ha sido guardada con exito.`)
+        } else {
+            toastMessage.error(`La ${type} con el nombre ${dataForm.title} ya existe, por favor seleccione un nombre diferente.`)
+        }
+    } else {
+        toastMessage.error(`Debes introducir un titulo y una descripcion al menos para añadir una ${type}.`)
+    }
+  }
 
   const handleSubmitNote = (event) => {
     event.preventDefault()
@@ -23,17 +41,9 @@ const Form = () => {
     formFromEntries.id = Object.fromEntries(form).title.toLowerCase().replaceAll(' ', '_')
     formFromEntries.created = new Date().toLocaleDateString()
 
-    if (formFromEntries.title !== '' && formFromEntries.description !== '') {
-        if(!validateNewItem(formFromEntries.title)){
-            setNotes([formFromEntries, ...notes]);
-            toastMessage.success(`La nota ha sido guardada con exito.`)
-        } else {
-            toastMessage.error(`La nota con el nombre ${formFromEntries.title} ya existe, por favor seleccione un nombre diferente.`)
-        }
-    } else {
-        toastMessage.error('Debes introducir un titulo y una descripcion al menos para añadir una nota.')
-    }
+    inputValidation(formFromEntries, 'nota');
   }
+
 
   const handleSubmitTask = (event) => {
     event.preventDefault()
@@ -43,16 +53,7 @@ const Form = () => {
     formFromEntries.id = Object.fromEntries(form).title.toLowerCase().replaceAll(' ', '_')
     formFromEntries.created = new Date().toLocaleDateString()
 
-    if (formFromEntries.title !== '' && formFromEntries.description !== '') {
-        if(!validateNewItem(formFromEntries.title)){
-            setTasks([formFromEntries, ...tasks]);
-            toastMessage.success(`La tarea ha sido guardada con exito.`)
-        } else {
-            toastMessage.error(`La tarea con el nombre ${formFromEntries.title} ya existe, por favor seleccione un nombre diferente.`)
-        }
-    } else {
-        toastMessage.error('Debes introducir un titulo y una descripcion al menos para añadir una tarea.')
-    }
+    inputValidation(formFromEntries, 'tarea');
   }
 
   return (

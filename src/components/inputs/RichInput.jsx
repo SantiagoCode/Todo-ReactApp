@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Editor from 'react-simple-wysiwyg';
 
 const RichInput = () => {
-  const [text, setText] = useState('Describe tu anotacion como prefieras...');
+  const [text, setText] = useState('');
   
   const handleChange = (e) => {
     setText(e.target.value);

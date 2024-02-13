@@ -98,7 +98,7 @@ export default function ListItems({keyWord}) {
     const { states } = useContext(TaskNotesContext);
     const { taskNotes, notes, tasks } = states
 
-    const filteredData = (taskNotes === 'note' ? notes : tasks).filter((item, key) => {
+    const filteredData = (taskNotes === 'note' ? notes : tasks).filter((item) => {
         if(item.title.includes(keyWord) || item.description.includes(keyWord)){
             return item
         }
