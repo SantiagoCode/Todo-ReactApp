@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;700&family=Roboto:wght@300;700&display=swap');
+@import 'bulma/css/bulma.css';
+
+@import './config.scss';
+@import './mixins/scrollBar.scss';
+
+@import 'react-calendar/dist/Calendar.css';
+
+html {
+    overflow: hidden;
+}
+
+h1, p, span {
+    color: var(--color);
+    margin: 0;
+}
+
+h1 {
+    font-size: 34px;
+}
+
+button {
+    margin: 1px;
+    padding: 6px 22px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+input, textarea {
+    width: -webkit-fill-available;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    margin: 4px;
+}
+
+input[type="color"] {
+    padding: 0;
+    height: 40px;
+    width: -webkit-fill-available;
+    cursor: pointer;
+}
+        
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--bg-color);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    
+    .TodoApp {
+        overflow: hidden;
+        
+        .navbar, .box {
+            background: transparent;
+        }
+        
+        .container-notes {
+            display: flex;
+            width: 100%;
+            
+            .NewItem {
+                width: 40%;
+                display: flex;
+                flex-direction: column;
+                
+                label {
+                    display: flex;
+                    flex-direction: column;
+                    padding: 10px;
+                }
+            }
+            
+            .ListItems {
+                width: 60%;
+
+                .listado {
+                    overflow: hidden scroll;
+                    max-height: 50vh;
+                    padding-right: 10px;
+
+                    @include mwScrollBar($primary);
+                }
+            }
+     
+            .btn-save {
+                background: var(--primary);
+                color: var(--color);
+                padding: 10px;
+                width: 100%;
+            }
+        }
+        
+        .ListNotes, li {
+            border-radius: 4px;
+            margin-bottom: 20px;
+            list-style: none;
+            padding: 20px 10px;
+            border: 2px solid beige;
+      
+            li input, .ListNotes, li textarea {
+                width: -webkit-fill-available;
+                max-width: unset;
+            }
+        }
+        
+        .date-text {
+            font-size: 12px;
+            text-align: right;
+        }
+        
+        .colapsed-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            p {
+                color: white;
+                font-size: 20px;
+            }
+      
+            .buttons {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .btn-control-item, .buttons .btn-control-item {
+                background: transparent;
+                color: white;
+            }
+        }      
+    }
+}
+
+:root {
+    --color: #ffffff;
+    --bg-color: #24292e;
+    --primary: #2a64f6;
+}
+  
+.react-calendar__navigation__label__labelText--from {
+    color: black;
+}
+
+// WYSIWYG EDITOR
+
+.rsw-toolbar {
+    display: flex;
+    justify-content: space-evenly;
+
+    button span {
+        color: black !important;
+    }
+}
+
+.rsw-ce {
+    background: white;
+    color: black;
+}
