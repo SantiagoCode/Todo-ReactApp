@@ -7,8 +7,10 @@ const Filter = ({ setter }) => {
   }
 
   return (
-    <div className='Filter'>
-      <input className='input' type="text" id="filter" onChange={handleInputChange} placeholder='Filtrar...'/>
+    <div className="navbar-item">
+      <div className='Filter'>
+        <input className='input' type="text" id="filter" onChange={handleInputChange} placeholder='Filtrar...'/>
+      </div>
     </div>
   )
 }

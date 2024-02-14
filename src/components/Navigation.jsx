@@ -1,33 +1,26 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import * as Icon from 'react-feather';
 import SwitchButtons from './SwitchButtons'
 import Filter from './Filter'
-import * as Icon from 'react-feather';
+import { TaskNotesContext } from './../context/TaskNotesContext'
 
-const Navigation = (props) => {
-  const { setKeyWordFilter } = props;
+const Navigation = ({ setKeyWordFilter, openMenu, setOpenMenu }) => {
+  const { states } = useContext(TaskNotesContext)
+  const { taskNotes } = states
+  const title = taskNotes === 'note' ? 'Notas' : 'Tareas';
 
   return (
-    <nav className="navbar" role="navigation" aria-label="main navigation" style={{ position: 'absolute', width: '100%' }}>
-      <div className="navbar-brand navbar-item">
-        <div className="has-text-white">
-          <Icon.Box size={58} />
+    <nav className="navbar has-background-black" role="navigation" aria-label="main navigation" style={{ width: '100%' }}>
+      <div className="is-flex is-justify-content-space-between px-6" style={{ width: '100%' }}>
+        <div className="is-flex is-align-items-center">
+          <button className='button is-black' onClick={() => setOpenMenu(!openMenu)}>
+            <Icon.Menu size={34} />
+          </button>
+          <h1 className='has-text-white'>{title}</h1>
         </div>
-
-        <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-
-      <div id="navbarBasicExample" className="navbar-menu">
-        <div className="navbar-end">
-          <div className="navbar-item">
-            <Filter setter={setKeyWordFilter}/>
-          </div>
-          <div className="navbar-item">
-            <SwitchButtons />
-          </div>
+        <div className="is-flex">
+          <Filter setter={setKeyWordFilter}/>
+          <SwitchButtons />
         </div>
       </div>
     </nav>

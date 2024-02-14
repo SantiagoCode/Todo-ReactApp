@@ -44,7 +44,6 @@ const Form = () => {
     inputValidation(formFromEntries, 'nota');
   }
 
-
   const handleSubmitTask = (event) => {
     event.preventDefault()
     const form = new FormData(event.target)
@@ -86,7 +85,7 @@ const Form = () => {
                 <span>Descripcion: </span>
                 <textarea rows="" cols="" name="description" id="description"></textarea>
             </label>
-            <InputDate text={'Fecha limite para tu tarea:'}/>
+            <InputDate text={'Fecha limite para tu tarea:'} onChange={() => {}}/>
             <label htmlFor="color">
                 <span>Color de la tarea: </span>
                 <input className='input' type="color" name="color" id="color" defaultValue={'#2a64f6'}/>

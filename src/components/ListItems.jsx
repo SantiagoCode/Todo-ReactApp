@@ -4,7 +4,7 @@ import { TaskNotesContext } from './../context/TaskNotesContext';
 
 export const ItemNote = ({value}) => {
     const { states, setters } = useContext(TaskNotesContext);
-    const { taskNotes, notes, tasks } = states
+    const { taskNotes, notes, tasks, view } = states
     const { setNotes, setTasks } = setters
 
     const [ disabled, setDisabled ] = useState(true)
@@ -96,7 +96,7 @@ export const ItemNote = ({value}) => {
 
 export default function ListItems({keyWord}) {
     const { states } = useContext(TaskNotesContext);
-    const { taskNotes, notes, tasks } = states
+    const { taskNotes, notes, tasks, view } = states
 
     const filteredData = (taskNotes === 'note' ? notes : tasks).filter((item) => {
         if(item.title.includes(keyWord) || item.description.includes(keyWord)){
@@ -105,14 +105,14 @@ export default function ListItems({keyWord}) {
     })
 
     return (
-        <div className="ListItems box is-shadowless">
+        <div className="ListItems">
             <h1 className="title has-text-white">
                 <Icon.List />
                 <span  className="ml-3">
                     Listado de {taskNotes === 'note' ? 'Notas' : 'Tareas'}
                 </span>
             </h1>
-            <ul className='listado'>
+            <ul className='listado is-relative'>
                 {filteredData.length > 0 ?
                     filteredData.map((item, key) => (
                         <ItemNote value={item} index={key} key={`key-${key}-${JSON.stringify(item)}`}/>

@@ -8,7 +8,7 @@ const NewItem = () => {
     const { taskNotes } = states
 
     return (
-        <div className='NewItem box is-shadowless'>
+        <div className='NewItem'>
             <h1 className='title has-text-white'>
                 <Icon.FilePlus />
                 <span  className="ml-3">
