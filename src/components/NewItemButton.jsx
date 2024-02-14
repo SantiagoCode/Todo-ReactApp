@@ -6,7 +6,7 @@ const NewItemButton = ({ view, addItem, setAddItem }) => {
     <>
       {(view === 'mobile') && 
         <button 
-            className="button is-primary is-large" 
+            className="button is-primary" 
             style={{ bottom: 20, right: 20, position: 'fixed' }}
             onClick={() => setAddItem(!addItem)}>
           <Icon.Edit size={30} />

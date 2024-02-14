@@ -66,13 +66,13 @@ export const ItemNote = ({value}) => {
                         <Icon.Disc style={{ marginRight: '10px', color: 'white' }}/>
                         <p>{value.title}</p>
                     </div>
-                    <button className="btn-control-item button is-borderless" onClick={() => setColapse(false)}>
+                    <button className="btn-control-item button is-small is-borderless" onClick={() => setColapse(false)}>
                         <Icon.Maximize />
                     </button>
                 </div>
                 :
                 <form onSubmit={handleEditItem} id={value.id}>
-                    <input className="input" type="text" name="title" id="" defaultValue={value.title} style={{ pointerEvents: disabled ? 'none' : 'auto' }}/>
+                    <input className="input is-small" type="text" name="title" id="" defaultValue={value.title} style={{ pointerEvents: disabled ? 'none' : 'auto' }}/>
                     <textarea className="textarea" rows="3" cols="" name="description" id="description" defaultValue={value.description} style={{ pointerEvents: disabled ? 'none' : 'auto' }}/>
                     <h2 className="date-text has-text-white">Fecha de creacion: {value.created}</h2>
                     {value.limitdate &&
@@ -81,10 +81,10 @@ export const ItemNote = ({value}) => {
 
                     <div className="buttons">
                         <div className="actions">
-                            <button className="button">{disabled ? 'Editar' : 'Guardar'}</button>
-                            <button className="button" onClick={(event) => handleDeleteItem(event, value.id)}>Eliminar</button>
+                            <button className="button is-small">{disabled ? 'Editar' : 'Guardar'}</button>
+                            <button className="button is-small" onClick={(event) => handleDeleteItem(event, value.id)}>Eliminar</button>
                         </div>
-                        <button className="btn-control-item button is-borderless" onClick={() => setColapse(true)}>
+                        <button className="btn-control-item button is-small is-borderless" onClick={() => setColapse(true)}>
                             <Icon.Minimize />
                         </button>
                     </div>

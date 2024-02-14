@@ -20,7 +20,7 @@ const InputDate = ({ text }) => {
         id="limitdate"
         value={value.toISOString()}
       />
-      <button className="button" onClick={(e) => handleShowCalendar(e)}>
+      <button className="button is-small" onClick={(e) => handleShowCalendar(e)}>
         {value.toLocaleDateString()}
       </button>
       {show && (

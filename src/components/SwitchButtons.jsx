@@ -11,7 +11,7 @@ const SwitchButtons = () => {
       {view === 'desktop' &&
         <div className="navbar-item">
           <div className="note-task">
-            <button className='button' onClick={() => setTaskNotes(taskNotes === 'note' ? 'task' : 'note')}>{taskNotes === 'note' ? 'Tareas' : 'Notas'}</button>
+            <button className='button is-small' onClick={() => setTaskNotes(taskNotes === 'note' ? 'task' : 'note')}>{taskNotes === 'note' ? 'Tareas' : 'Notas'}</button>
           </div>
         </div>
       }

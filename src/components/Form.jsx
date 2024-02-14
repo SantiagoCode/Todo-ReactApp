@@ -61,7 +61,7 @@ const Form = () => {
         <form onSubmit={handleSubmitNote}>
             <label htmlFor="title">
                 <span>Titulo: </span>
-                <input className='input' type="text" name="title" id="title" />
+                <input className='input is-small' type="text" name="title" id="title" />
             </label>
             <label htmlFor="description">
                 <span>Descripcion: </span>
@@ -69,9 +69,9 @@ const Form = () => {
             </label>
             <label htmlFor="color">
                 <span>Color de la nota: </span>
-                <input className='input' type="color" name="color" id="color" defaultValue={'#2a64f6'}/>
+                <input className='input is-small' type="color" name="color" id="color" defaultValue={'#2a64f6'}/>
             </label>
-            <button className='btn-save button'>
+            <button className='btn-save button is-small'>
                 Guardar Nota
             </button>
         </form>
@@ -79,7 +79,7 @@ const Form = () => {
         <form onSubmit={handleSubmitTask}>
             <label htmlFor="title">
                 <span>Titulo: </span>
-                <input className='input' type="text" name="title" id="title" />
+                <input className='input is-small' type="text" name="title" id="title" />
             </label>
             <label htmlFor="description">
                 <span>Descripcion: </span>
@@ -88,9 +88,9 @@ const Form = () => {
             <InputDate text={'Fecha limite para tu tarea:'} onChange={() => {}}/>
             <label htmlFor="color">
                 <span>Color de la tarea: </span>
-                <input className='input' type="color" name="color" id="color" defaultValue={'#2a64f6'}/>
+                <input className='input is-small' type="color" name="color" id="color" defaultValue={'#2a64f6'}/>
             </label>
-            <button className='btn-save button'>
+            <button className='btn-save button is-small'>
                 Guardar Tarea
             </button>
         </form>
