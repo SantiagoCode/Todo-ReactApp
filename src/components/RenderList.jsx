@@ -5,25 +5,23 @@ import ListItems from './ListItems'
 const RenderList = ({ view, addItem, keyWord }) => {
   return (
     <div className="column">
-
-      {(view === 'desktop') &&
-        <section className='p-4'>
-          <div className="columns is-marginless" style={{  width: '100%' }}>
-            {view === 'desktop' &&
-              <div className="column is-5">
-                <NewItem /> 
+      <section className='px-2' style={{ paddingTop: '70px' }}>
+        
+        {(view === 'desktop') &&
+            <div className="columns is-marginless" style={{  width: '100%' }}>
+              {view === 'desktop' &&
+                <div className="column is-5">
+                  <NewItem /> 
+                </div>
+              }
+              <div className="column">
+                <ListItems keyWord={keyWord} />
               </div>
-            }
-            <div className="column">
-              <ListItems keyWord={keyWord} />
             </div>
-          </div>
-        </section>
-      }
+          }
 
-      {(view === 'mobile') &&
-        <section className='p-4'>
-          <div>
+        {(view === 'mobile') &&
+          <>
             {addItem === true &&
               <div className="">
                 <NewItem /> 
@@ -34,10 +32,9 @@ const RenderList = ({ view, addItem, keyWord }) => {
                 <ListItems keyWord={keyWord} />
               </div>
             }
-          </div>
-        </section>
-      }
-      
+          </>}
+
+      </section>
     </div>
   )
 }

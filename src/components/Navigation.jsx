@@ -10,7 +10,7 @@ const Navigation = ({ setKeyWordFilter, openMenu, setOpenMenu }) => {
   const title = taskNotes === 'note' ? 'Notas' : 'Tareas';
 
   return (
-    <nav className="navbar has-background-black" role="navigation" aria-label="main navigation" style={{ width: '100%' }}>
+    <nav className="navbar has-background-black" role="navigation" aria-label="main navigation" style={{ width: '100%', position: 'fixed' }}>
       <div className={`is-flex is-justify-content-space-between ${view === 'desktop' && 'px-2'}`} style={{ width: '100%' }}>
         <div className="is-flex is-align-items-center">
           <button className='button is-small is-black' onClick={() => setOpenMenu(!openMenu)}>

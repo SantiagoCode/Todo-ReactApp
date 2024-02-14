@@ -8,8 +8,8 @@ const SideNavigation = ({ view, openMenu }) => {
   return (
     <>
       {(view === 'mobile' && openMenu === true) && 
-        <div className="column is-3">
-          <div className="has-background-black px-5 pt-4" style={{ height: '100%' }}>
+        <div className="column is-3" style={{ position: 'fixed', height: '100%', zIndex: 9 }}>
+          <div className="has-background-black px-1" style={{ height: '100%', paddingTop: '70px' }}>
             <ul>
               <li>
                 <button className='button is-white is-inverted is-borderless is-fullwidth has-text-left' style={{ justifyContent: 'left' }} onClick={() => setTaskNotes('note')}>Notas</button>

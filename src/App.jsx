@@ -25,7 +25,7 @@ function App() {
   return (
     <div className='TodoApp'>
       <Navigation setKeyWordFilter={setKeyWord} openMenu={openMenu} setOpenMenu={setOpenMenu} />
-      <div className="columns is-gapless is-marginless" style={{ minHeight: 'inherit' }}>
+      <div className="columns is-mobile is-gapless is-marginless" style={{ minHeight: 'inherit' }}>
         <SideNavigation view={view} openMenu={openMenu}/> 
         <RenderList view={view} addItem={addItem} keyWord={keyWord}/>
       </div>
