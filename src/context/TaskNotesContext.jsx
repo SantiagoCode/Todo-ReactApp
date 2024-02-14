@@ -7,7 +7,7 @@ const TaskNotesContextProvider = ({ children }) => {
   const [taskNotes, setTaskNotes] = useState('note');
   const [notes, setNotes] = useState(getDataValidation('notes'));
   const [tasks, setTasks] = useState(getDataValidation('tasks'));
-  const [view, setView] = useState('mobile');
+  const [view, setView] = useState(window.innerWidth > 1024 ? 'desktop' : 'mobile');
 
   const updateView = () => {
     setView(window.innerWidth > 1024 ? 'desktop' : 'mobile');
